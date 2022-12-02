@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 
 public class Day2_Part2 {
 
-    enum Coup {
+    private enum Coup {
         ROCK(1),
         PAPER(2),
         SCISSORS(3);
@@ -41,7 +41,7 @@ public class Day2_Part2 {
 
 
 
-    enum Result {
+    private enum Result {
         LOSS(0),
         DRAW(3),
         WIN(6);
@@ -109,10 +109,6 @@ public class Day2_Part2 {
             String[] moves = match.split(" ");
             totalScore += evaluateResult(moves[0].charAt(0), moves[1].charAt(0));
         }
-
         System.out.println(totalScore);
-
-
     }
-
 }

@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 
 public class Day2 {
 
-    enum Coup {
+    private enum Coup {
         ROCK(1),
         PAPER(2),
         SCISSORS(3);
@@ -44,7 +44,7 @@ public class Day2 {
 
 
 
-    enum Result {
+    private enum Result {
         LOSS(0),
         DRAW(3),
         WIN(6);
