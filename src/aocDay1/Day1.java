@@ -1,4 +1,4 @@
-package aoc_day1;
+package aocDay1;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.NavigableSet;
 import java.util.TreeSet;
-import java.util.function.Function;
 
 public class Day1 {
 

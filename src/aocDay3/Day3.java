@@ -1,11 +1,11 @@
-package aoc_day3;
+package aocDay3;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class Day3_Part2 {
+public class Day3 {
 
     public static int toPriority(char c) {
         int charValue = (int) c;
@@ -19,9 +19,9 @@ public class Day3_Part2 {
         }
     }
 
-    public static int findCommonChar(String s1, String s2, String s3) {
+    public static int findCommonChar(String s1, String s2) {
         return s1.chars()
-                .filter(c -> s2.indexOf(c) != -1 && s3.indexOf(c) != -1)
+                .filter(c -> s2.indexOf(c) != -1)
                 .findFirst().orElse(0);
     }
 
@@ -31,8 +31,11 @@ public class Day3_Part2 {
 
         String[] rucksacks = input.split("\r\n");
         long total = 0;
-        for (int i = 0; i < rucksacks.length; i += 3) {
-            total += toPriority((char) findCommonChar(rucksacks[i], rucksacks[i + 1], rucksacks[i + 2]));
+        for (String sack : rucksacks) {
+            int middle = sack.length() / 2;
+            String firstHalf = sack.substring(0, middle);
+            String secondHalf = sack.substring(middle);
+            total += toPriority((char) findCommonChar(firstHalf, secondHalf));
         }
         System.out.println(total);
     }

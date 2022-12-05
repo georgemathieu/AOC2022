@@ -1,4 +1,4 @@
-package aoc_day4;
+package aocDay4;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
-public class Day4_Part2 {
+public class Day4Part2 {
 
     /**
      * Takes 2 strings following the format xx-xx (xx being numbers).

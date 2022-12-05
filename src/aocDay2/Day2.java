@@ -1,4 +1,4 @@
-package aoc_day2;
+package aocDay2;
 
 import java.io.IOException;
 import java.nio.file.Files;

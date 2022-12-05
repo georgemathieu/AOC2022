@@ -1,11 +1,11 @@
-package aoc_day2;
+package aocDay2;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class Day2_Part2 {
+public class Day2Part2 {
 
     private enum Coup {
         ROCK(1),
