@@ -100,7 +100,7 @@ public class Day2Part2 {
     }
 
     public static void main(String[] args) throws IOException {
-        Path inputPath = Paths.get("src/aoc_day2/input_day2.txt");
+        Path inputPath = Paths.get("src/aocDay2/input_day2.txt");
         String input = Files.readString(inputPath);
 
         long totalScore = 0;

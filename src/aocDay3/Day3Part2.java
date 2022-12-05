@@ -26,7 +26,7 @@ public class Day3Part2 {
     }
 
     public static void main(String[] args) throws IOException {
-        Path inputPath = Paths.get("src/aoc_day3/input_day3.txt");
+        Path inputPath = Paths.get("src/aocDay3/input_day3.txt");
         String input = Files.readString(inputPath);
 
         String[] rucksacks = input.split("\r\n");

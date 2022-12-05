@@ -11,7 +11,7 @@ import java.util.TreeSet;
 public class Day1 {
 
     public static void main(String[] args) throws IOException {
-        Path inputPath = Paths.get("src/aoc_day1/input_day1.txt");
+        Path inputPath = Paths.get("src/aocDay1/input_day1.txt");
         String input = Files.readString(inputPath);
         // System.out.println(input);
 

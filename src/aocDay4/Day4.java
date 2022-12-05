@@ -40,7 +40,7 @@ public class Day4 {
     }
 
     public static void main(String[] args) throws IOException {
-        Path inputPath = Paths.get("src/aoc_day4/input_day4.txt");
+        Path inputPath = Paths.get("src/aocDay4/input_day4.txt");
         String input = Files.readString(inputPath);
 
         String[] pairs = input.split("\r\n");
