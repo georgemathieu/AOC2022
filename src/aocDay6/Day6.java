@@ -9,6 +9,24 @@ import java.util.Set;
 
 public class Day6 {
 	
+	// Part 1, last 4 chars
+	/*static int findFirstNonRepeatedCharacter(String input) {
+		for (int i = 3; i < input.length(); i++) {
+			char ref = input.charAt(i);
+			char ref1 = input.charAt(i - 1);
+			char ref2 = input.charAt(i - 2);
+			char ref3 = input.charAt(i - 3);
+			if (ref != ref1 && ref != ref2 && ref != ref3
+					&& ref1 != ref2 && ref1 != ref3 && ref2 != ref3) {
+				return i + 1;
+			}
+		}
+		return 0;
+	}*/
+	
+	/**
+	 * Part 2, last 14 chars
+	 */
 	static int findFirstNonRepeatedCharacter(String input) {
 		Set<Character> chars = new HashSet<>();
 		for (int i = 13; i < input.length(); i++) {
