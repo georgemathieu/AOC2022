@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -81,6 +82,20 @@ public class Day7 {
 				.filter(i -> i < 100_000)
 				.sum());
 
-	}
+		int totalSpace = 70_000_000;
+		int requiredUnusedSpace = 30_000_000;
+		int maxStorageForUpdate = totalSpace - requiredUnusedSpace;
+		int totalUsedSpace = root.getRecursiveSize();
+		int needToFreeSpace = totalUsedSpace - maxStorageForUpdate;
 
+		Optional<Node> lowestNodeRequiredForDeletion = dirs.stream()
+				.filter(d -> d.getRecursiveSize() > needToFreeSpace)
+				.sorted(Comparator.comparingInt(Node::getRecursiveSize))
+				.findFirst();
+
+		if (lowestNodeRequiredForDeletion.isPresent()) {
+			Node delete = lowestNodeRequiredForDeletion.get();
+			System.out.println("Need to delete : " + delete.name + ", space : " + delete.getRecursiveSize());
+		}
+	}
 }
