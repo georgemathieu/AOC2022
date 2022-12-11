@@ -1,16 +1,16 @@
 package aocDay11;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.function.IntConsumer;
 import java.util.regex.Pattern;
 
 public class Day11 {
@@ -28,6 +28,7 @@ public class Day11 {
     }
 
     private static List<Monkey> monkeys = new ArrayList<>();
+    private static int roundDownValue = 1;
 
     private static Function<Long, Long> interpreteOperation(String operationInput) {
         String operationContent = operationInput.split("new = old ")[1];
@@ -47,9 +48,6 @@ public class Day11 {
             case '+':
                 function = (old) -> old + (value != -1 ? value : old);
                 break;
-            case '-':
-                function = (old) -> old - (value != -1 ? value : old);
-                break;
 
             case '*':
                 function = (old) -> old * (value != -1 ? value : old);
@@ -66,13 +64,15 @@ public class Day11 {
         Integer diviseValue = Integer.parseInt(diviseInput.split("Test: divisible by ")[1]);
         Integer passeTrue = Integer.parseInt(passeInputTrue.split("If true: throw to monkey ")[1]);
         Integer passeFalse = Integer.parseInt(passeInputFalse.split("If false: throw to monkey ")[1]);
+        roundDownValue *= diviseValue;
 
         return (value) -> {
+            Long valueReduced = value % roundDownValue;
             if (value % diviseValue == 0) {
-                monkeys.get(passeTrue).itemWorry.add(value);
+                monkeys.get(passeTrue).itemWorry.add(valueReduced);
                 monkeys.get(initialMonkey).itemsToRemove.add(value);
             } else {
-                monkeys.get(passeFalse).itemWorry.add(value);
+                monkeys.get(passeFalse).itemWorry.add(valueReduced);
                 monkeys.get(initialMonkey).itemsToRemove.add(value);
             }
         };
@@ -91,7 +91,8 @@ public class Day11 {
             // Item list
             String[] itemsInput = lines[i + 1].split(": ")[1].split(", ");
             for (String item: itemsInput) {
-                m.itemWorry.add(Long.parseLong(item));
+                Long itemValue = Long.parseLong(item);
+                m.itemWorry.add(itemValue);
             }
 
             // Operation
@@ -124,9 +125,9 @@ public class Day11 {
                 .map(m -> Integer.valueOf(m.getInspectCount()))
                 .sorted(Collections.reverseOrder())
                 .limit(2)
-                .mapToInt(i -> i)
+                .mapToLong(i -> i)
                 .reduce((i1, i2) -> i1 * i2)
-                .getAsInt()
+                .getAsLong()
         );
     }
 }
